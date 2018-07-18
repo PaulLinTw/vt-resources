@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.1" jmeter="3.1 r1770033">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="NxLog TCP Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TCP TO Nxlog Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">NumOfTCPThreads</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">TCPRampTime</stringProp>
+        <longProp name="ThreadGroup.start_time">1394694936000</longProp>
+        <longProp name="ThreadGroup.end_time">1394694936000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="My MLLP test 00" enabled="true">
+          <stringProp name="TCPSampler.classname">nl.avisi.jmeter.mllpsampler.MllpTCPClient</stringProp>
+          <stringProp name="TCPSampler.server">NXLOGIP</stringProp>
+          <boolProp name="TCPSampler.reUseConnection">false</boolProp>
+          <stringProp name="TCPSampler.port">1800</stringProp>
+          <boolProp name="TCPSampler.nodelay">true</boolProp>
+          <stringProp name="TCPSampler.timeout">3000</stringProp>
+          <stringProp name="TCPSampler.ctimeout">3000</stringProp>
+          <stringProp name="TCPSampler.request">{
+  &quot;_index&quot;: &quot;nsp22-2017.03.21&quot;,
+  &quot;_type&quot;: &quot;logs&quot;,
+  &quot;_id&quot;: &quot;AVrvuha4ntMrI-wYy2Js&quot;,
+  &quot;_score&quot;: null,
+  &quot;_source&quot;: {
+    &quot;EventReceivedTime&quot;: &quot;2017-03-21 15:17:11&quot;,
+    &quot;SourceModuleName&quot;: &quot;aplog1&quot;,
+    &quot;SourceModuleType&quot;: &quot;im_file&quot;,
+    &quot;SyslogFacilityValue&quot;: 1,
+    &quot;SyslogFacility&quot;: &quot;USER&quot;,
+    &quot;SyslogSeverityValue&quot;: 5,
+    &quot;SyslogSeverity&quot;: &quot;NOTICE&quot;,
+    &quot;SeverityValue&quot;: 2,
+    &quot;Severity&quot;: &quot;INFO&quot;,
+    &quot;EventTime&quot;: &quot;2017-03-21 15:17:11&quot;,
+    &quot;Hostname&quot;: &quot;idc-nsp-ap23p&quot;,
+    &quot;Log_Name&quot;: &quot;/wls/NSP_Projects/NSP_Prod/logs/NSP_Manage07.log.2017-03-21-15&quot;,
+    &quot;message&quot;: &quot;###NSP###2017-03-21 15:17:11,568 INFO  com.fet.crm.nsp.mware.client.soa.BusServiceClient - BusServiceClient.checkIsWriteOffByAccountNoForFET() endPoint=&gt;http://10.68.72.138:8622/CRM-BillingBizServices/CRMBillInquiryBizService.serviceagent/CRMBillInquiryBizServiceEndpointHTTP\ninput=&lt;com.tibco.www.schemas.CRM__BillingBizServices.SharedResources.XSD.Schema__xsd.QueryBillInfoByAccountNoRequest&gt;\n  &lt;authInfo&gt;\n    &lt;channelID&gt;Payment&lt;/channelID&gt;\n    &lt;password&gt;xxxx&lt;/password&gt;\n    &lt;userID&gt;xxxx&lt;/userID&gt;\n    &lt;____hashCodeCalc&gt;false&lt;/____hashCodeCalc&gt;\n  &lt;/authInfo&gt;\n  &lt;transinfo&gt;\n    &lt;transChannelId&gt;Payment&lt;/transChannelId&gt;\n    &lt;transSubChannel&gt;NSP&lt;/transSubChannel&gt;\n    &lt;transUserId&gt;xxx&lt;/transUserId&gt;\n    &lt;transBpId&gt;de6fd603-699f-4fd8-9c5a-8a2c564ed34a&lt;/transBpId&gt;\n    &lt;transPath&gt;NSP&lt;/transPath&gt;\n    &lt;____hashCodeCalc&gt;false&lt;/____hashCodeCalc&gt;\n  &lt;/transinfo&gt;\n  &lt;accountInfos&gt;\n    &lt;com.tibco.www.schemas.CRM__Billing.SharedResources.XSD.Base.Imported.Schema__xsd.AccountInfo__AR&gt;\n      &lt;accountNoInfo&gt;\n        &lt;accountNumber&gt;4016904483&lt;/accountNumber&gt;\n        &lt;____hashCodeCalc&gt;false&lt;/____hashCodeCalc&gt;\n      &lt;/accountNoInfo&gt;\n      &lt;businessEntity&gt;110154&lt;/businessEntity&gt;\n      &lt;subBE&gt;A&lt;/subBE&gt;\n      &lt;____hashCodeCalc&gt;false&lt;/____hashCodeCalc&gt;\n    &lt;/com.tibco.www.schemas.CRM__Billing.SharedResources.XSD.Base.Imported.Schema__xsd.AccountInfo__AR&gt;\n  &lt;/accountInfos&gt;\n  &lt;____hashCodeCalc&gt;false&lt;/____hashCodeCalc&gt;\n&lt;/com.tibco.www.schemas.CRM__BillingBizServices.SharedResources.XSD.Schema__xsd.QueryBillInfoByAccountNoRequest&gt;&quot;,
+    &quot;@version&quot;: &quot;1&quot;,
+    &quot;@timestamp&quot;: &quot;2017-03-21T07:17:11.644Z&quot;,
+    &quot;host&quot;: &quot;10.68.76.108&quot;,
+    &quot;path&quot;: &quot;/var/log/elk/LS-NCP1-2017-03-21.log&quot;
+  },
+  &quot;sort&quot;: [ 1490080631644, 1490080631644 ]
+}</stringProp>
+          <boolProp name="TCPSampler.closeConnection">true</boolProp>
+          <stringProp name="TCPSampler.EolByte">0</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree/>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="My MLLP test 01" enabled="true">
+          <stringProp name="TCPSampler.classname">nl.avisi.jmeter.mllpsampler.MllpTCPClient</stringProp>
+          <stringProp name="TCPSampler.server">NXLOGIP</stringProp>
+          <boolProp name="TCPSampler.reUseConnection">false</boolProp>
+          <stringProp name="TCPSampler.port">1800</stringProp>
+          <boolProp name="TCPSampler.nodelay">true</boolProp>
+          <stringProp name="TCPSampler.timeout">3000</stringProp>
+          <stringProp name="TCPSampler.ctimeout">3000</stringProp>
+          <stringProp name="TCPSampler.request">&lt;Mar 17, 2017 12:06:11 AM CST&gt; &lt;Info&gt; &lt;WebLogicServer&gt; &lt;idc-nsp-ap17p&gt; &lt;&gt; &lt;[ACTIVE] ExecuteThread: &apos;0&apos; for queue: &apos;weblogic.kernel.Default (self-tuning)&apos;&gt; &lt;&gt; &lt;&gt; &lt;&gt; &lt;1489680371639&gt; &lt;BEA-000000&gt; &lt;Starting WebLogic Server with Java HotSpot(TM) 64-Bit Server VM Version 20.45-b01 from Sun Microsystems Inc..&gt; </stringProp>
+          <boolProp name="TCPSampler.closeConnection">true</boolProp>
+          <stringProp name="TCPSampler.EolByte">0</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree/>
+        <TCPSampler guiclass="TCPSamplerGui" testclass="TCPSampler" testname="My MLLP test 02" enabled="true">
+          <stringProp name="TCPSampler.classname">nl.avisi.jmeter.mllpsampler.MllpTCPClient</stringProp>
+          <stringProp name="TCPSampler.server">NXLOGIP</stringProp>
+          <boolProp name="TCPSampler.reUseConnection">false</boolProp>
+          <stringProp name="TCPSampler.port">1800</stringProp>
+          <boolProp name="TCPSampler.nodelay">true</boolProp>
+          <stringProp name="TCPSampler.timeout">3000</stringProp>
+          <stringProp name="TCPSampler.ctimeout">3000</stringProp>
+          <stringProp name="TCPSampler.request">####&lt;Mar 21, 2017 3:29:23 PM CST&gt; &lt;Error&gt; &lt;HTTP&gt; &lt;idc-nsp-ap17p&gt; &lt;NSP_Manage01&gt; &lt;[ACTIVE] ExecuteThread: &apos;9&apos; for queue: &apos;weblogic.kernel.Default (self-tuning)&apos;&gt; &lt;&lt;WLS Kernel&gt;&gt; &lt;&gt; &lt;&gt; &lt;1490081363980&gt; &lt;BEA-101020&gt; &lt;[ServletContext@1307247420[app:NSP module:NSP.war path:null spec-version:3.0]] Servlet failed with an Exception
+java.lang.NullPointerException
+&gt; 
+####&lt;Mar 21, 2017 3:34:10 PM CST&gt; &lt;Warning&gt; &lt;Socket&gt; &lt;idc-nsp-ap17p&gt; &lt;NSP_Manage01&gt; &lt;[ACTIVE] ExecuteThread: &apos;2&apos; for queue: &apos;weblogic.kernel.Default (self-tuning)&apos;&gt; &lt;&lt;WLS Kernel&gt;&gt; &lt;&gt; &lt;&gt; &lt;1490081650251&gt; &lt;BEA-000449&gt; &lt;Closing the socket, as no data read from it on 10.68.66.220:1,651 during the configured idle timeout of 5 seconds.&gt; </stringProp>
+          <boolProp name="TCPSampler.closeConnection">true</boolProp>
+          <stringProp name="TCPSampler.EolByte">0</stringProp>
+          <stringProp name="ConfigTestElement.username"></stringProp>
+          <stringProp name="ConfigTestElement.password"></stringProp>
+        </TCPSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
